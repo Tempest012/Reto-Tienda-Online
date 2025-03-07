@@ -1,1 +1,20 @@
-<p>Descripción:{{descripcion}}, Precio: ${{precio}}</p>
+<div class="container mt-5">
+    
+    <ul class="list-group w-50 mx-auto">
+    @for (producto of productos; track producto) {
+    <li class="list-group-item text-center">{{ producto.descripcion }}, ${{producto.precio}}</li>
+    }
+    </ul>
+    <div class="mt-3 d-flex justify-content-center">
+    <input type="text" #productoInput class="form-control mb-2 w-50"
+    placeholder="Nuevo producto">
+    <input type="number" #precioInput class="form-control mb-2 w-50" placeholder="Precio">
+    
+    </div>
+    <div class="d-flex justify-content-center">
+    <button class="btn btn-primary w-50"
+    (click)="agregarProducto(productoInput.value, +precioInput.value); productoInput.value=''; precioInput.value=''">
+    Agregar producto
+    </button>
+    </div>
+    </div>
